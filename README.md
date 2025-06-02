@@ -11,12 +11,6 @@ This project focuses on detecting emotions from facial expressions using compute
 - Utilizes Haar Cascades for efficient face detection.
 - Modular code structure for easy integration and scalability.
 
-## 🖥️ Demo
-
-![Emotion Detection Demo](./images/emotion_demo.gif)
-
-*Real-time emotion detection in action.*
-
 ## 📁 Project Structure
 
 ```
