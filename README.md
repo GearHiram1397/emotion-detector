@@ -2,35 +2,31 @@
 
 ## 🧠 Overview
 
-This project focuses on detecting emotions from facial expressions using computer vision techniques. It leverages OpenCV for face detection and a pre-trained deep learning model for emotion classification.
+This is a simple text-based emotion detection project using IBM Watson NLP. The app sends user-provided text to a Watson API endpoint and returns the predicted emotion scores (anger, joy, sadness, etc.) and the dominant emotion.
 
 ## 🚀 Features
 
-- Real-time emotion detection from webcam feed.
-- Supports multiple emotion categories: Happy, Sad, Angry, Surprise, Neutral, etc.
-- Utilizes Haar Cascades for efficient face detection.
-- Modular code structure for easy integration and scalability.
+- Text input–based emotion analysis
+- Utilizes IBM Watson’s NLP API for emotion prediction
+- Flask-based web interface for input and results
+- Simple and modular code
 
-## 📁 Project Structure
+## 🗂 Project Structure
 
 ```
 emotion-detector/
 ├── EmotionDetection/
 │   ├── __init__.py
-│   ├── detector.py
-│   └── utils.py
-├── models/
-│   └── emotion_model.h5
-├── images/
-│   └── emotion_demo.gif
-├── requirements.txt
+│   ├── emotion_detection.py
+│   └── test_emotion_detection.py
+├── static/
+│   └── mywebscript.js
+├── templates/
+│   └── index.html
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
-
-- `EmotionDetection/`: Contains the core modules for face detection and emotion classification.
-- `models/`: Holds the pre-trained emotion detection model.
-- `images/`: Includes demo images and GIFs.
-- `requirements.txt`: Lists all Python dependencies.
 
 ## 🛠️ Installation
 
@@ -40,10 +36,10 @@ emotion-detector/
    cd emotion-detector
    ```
 
-2. **Create and activate a virtual environment (optional but recommended):**
+2. **Create and activate a virtual environment (optional):**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
 
 3. **Install the required packages:**
@@ -51,42 +47,33 @@ emotion-detector/
    pip install -r requirements.txt
    ```
 
-## 🎮 Usage
+## ▶️ Usage
 
-1. **Run the emotion detector:**
-   ```bash
-   python EmotionDetection/detector.py
-   ```
+You can use the main emotion detector function from `emotion_detection.py`:
 
-2. **Interact with the application:**
-   - A window will open displaying the webcam feed.
-   - Detected faces will be highlighted, and their corresponding emotions will be labeled.
-   - Press `q` to exit the application.
+```python
+from EmotionDetection.emotion_detection import emotion_detector
+
+result = emotion_detector("I am feeling very happy today!")
+print(result)
+# Output: {'anger': 0.0, 'disgust': 0.0, 'fear': 0.01, 'joy': 0.98, 'sadness': 0.01, 'dominant_emotion': 'joy'}
+```
 
 ## 🧪 Testing
 
-To run unit tests (if available):
+Run the test file to validate your implementation:
 
 ```bash
-python -m unittest discover tests
+python EmotionDetection/test_emotion_detection.py
 ```
-
-*Ensure you have a `tests/` directory with appropriate test cases.*
 
 ## 📦 Dependencies
 
 - Python 3.7+
-- OpenCV
-- TensorFlow / Keras
-- NumPy
-- Other dependencies listed in `requirements.txt`
+- `requests`
+- `json`
+- Flask (if using web interface)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙌 Acknowledgements
-
-- [FER-2013 Dataset](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
-- [OpenCV](https://opencv.org/)
-- [Keras](https://keras.io/)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
